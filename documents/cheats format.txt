@@ -1,0 +1,39 @@
+code_format:
+
+gameshark_v1
+gameshark_v2
+gameshark_v3
+PAR_v1
+PAR_v2
+PAR_v3
+direct_v1
+direct_v2
+direct_v3
+
+gameshark_v1=gameshark_v2=PAR_v1=PAR_v2,gameshark_v3=PAR_v3,direct_v1=direct_v2
+
+direct_v1/v2:
+no encrypte gameshark_v1/v2/PAR_v1/v2
+
+direct_v3:
+no encrypte gameshark_v3/PAR_v3
+
+
+EX.
+direct_v1 money max
+22000454 05F5E0FF
+
+direct_v2 money max
+22000454 05F5E0FF
+-----------------
+direct_v3 money max
+04200454 05F5E0FF
+
+# money max
+04200454 05F5E0FF
+
+
+code_name:
+when emlutor language select japanese,cheat file charset use SHIFT-JIS,other ANSI.
+SJIS:12 全角文字、24半角文字
+ANSI:23 characters
