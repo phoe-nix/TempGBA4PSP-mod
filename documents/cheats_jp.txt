@@ -1,0 +1,169 @@
+UnOfficial gpSP kai
+-- gameplaySP Gameboy Advance emulator for Playstation Portable --
+
+CHEAT CODE
+
+dir.cfgで指定したフォルダに、[ROM名].chtで保存する
+文字コードはUTF-8Nを使用すること
+
+以下の書式にて、30個まで登録可能
+
+	code_format code_name
+	aaaaaaaa dddddddd
+	aaaaaaaa dddddddd
+	...
+
+	code_format
+		以下の9種類を指定可能
+		gameshark_v1
+		gameshark_v2
+		gameshark_v3
+		PAR_v1
+		PAR_v2
+		PAR_v3
+		direct_v1
+		direct_v2
+		direct_v3
+
+		注意
+			・gameshark_v1=gameshark_v2=PAR_v1=PAR_v2,gameshark_v3=PAR_v3,direct_v1=direct_v2で、実質4種類
+			・direct_v1/v2はgameshark_v1/v2/PAR_v1/v2、direct_v2はgameshark_v3/PAR_v3の非暗号化コード
+
+	code_name
+		半角文字で16文字まで設定可能
+
+		注意
+			全角文字はUTF-8Nでは3byteなので、現在(3.2 test 8.6まで)5文字しか登録されない
+			test8.7以降で拡張予定
+
+	aaaaaaaa dddddddd
+		チートコード
+		255個まで連続で設定可能
+
+コード詳細
+以下は全て暗号化前の状態
+
+gameshark_v1/v2/PAR_v1/v2/direct_v1/v2
+
+	0aaaaaaa 000000xx
+		アドレスaaaaaaaに1byteデータxxを書込
+
+	1aaaaaaa 0000xxxx
+		アドレスaaaaaaaに2byteデータxxxxを書込
+
+	2aaaaaaa xxxxxxxx
+		アドレスaaaaaaaに4byteデータxxxxxxxxを書込
+
+	3000cccc xxxxxxxx
+	aaaaaaaa bbbbbbbb
+	...
+		4byteデータxxxxxxxxを(cccc-1)行分のアドレスに書き込む
+		アドレスデータが奇数個の場合、cccccccc 00000000の用に0でパディングする
+		ex.
+			30000003 FFFFFFFF
+			20000000 20000001
+			20000002 00000000
+
+	60aaaaaa y000xxxx
+		ROMアドレス8000000h+aaaaaa*2byteデータxxxxを書込
+		[8000000h+aaaaaa*2]=xxxx
+		yの詳細は不明
+
+		注意
+		実機では書換個数に制限があるがgpSPでは無い
+		オンメモリの場合のみ書換えが行われる
+		(旧型は16MB以下、新型は32MB以下)
+
+	8a1aaaaa 000000xx
+	8a2aaaaa 0000xxxx
+	8a4aaaaa xxxxxxxx
+		PAR/GSのボタンが押されたときに、アドレスa0aaaaaにそれぞれ1/2/4byteの書込を行う
+
+		注意
+		現在未対応
+
+	80F00000 0000xxxx
+		PAR/GSのボタンが押されたときに、スローモーションを行う
+		速度をxxxxで指示、最高速0000 -> 最低速ffff
+
+		注意
+		現在未対応
+
+	Daaaaaaa 0000xxxx
+	Daaaaaaa 0010xxxx
+	Daaaaaaa 0020xxxx
+	Daaaaaaa 0030xxxx
+		アドレスaaaaaの内容を2byteデータxxxxと比較し、偽の場合は次のコードをスキップする
+		条件は上から順に、[a]=x,[a]!=x,[a]<=x,[a]>=x
+
+		注意
+		現在[a]=x以外は未対応
+
+	E0zzxxxx 0aaaaaaa
+	E0zzxxxx 1aaaaaaa
+	E0zzxxxx 2aaaaaaa
+	E0zzxxxx 3aaaaaaa
+		アドレスaaaaaの内容を2byteデータxxxxと比較し、偽の場合はzzで指示するコードをスキップする
+		条件は上から順に、[a]=x,[a]!=x,[a]<=x,[a]>=x
+
+		注意
+		現在[a]=x以外は未対応
+
+	Faaaaaaa 00000x0y
+	xxxxxxxx 001DC0DE
+		通称マスターコード、実機ではチートを有効にするのに必要
+		gpSPでは必要としない
+
+	DEADFACE 0000xxxx
+		暗号化に使用されるシードを変更する
+
+		注意
+		現在未対応
+
+
+gameshark_v3/PAR_v3/direct_v3
+
+	00aaaaaa xxxxxxyy
+		アドレスa0aaaaa～アドレスa0aaaaa+xxxxxxに1byteデータyyを書込
+
+	02aaaaaa xxxxyyyy
+		アドレスa0aaaaa～アドレスa0aaaaa+xxxx*2に2byteデータyyyyを書込
+
+	04aaaaaa yyyyyyyy
+		アドレスa0aaaaaに4byteデータyyyyyyyyを書込
+
+	40aaaaaa xxxxxxyy
+		a0aaaaaの内容にxxxxxxを加えたアドレスに1byteデータyyを書込
+
+	42aaaaaa xxxxyyyy
+		a0aaaaaの内容にxxxx*2を加えたアドレスに2byteデータyyyyを書込
+
+	44aaaaaa yyyyyyyy
+		a0aaaaaの内容のアドレスに4byteデータyyyyyyyyを書込
+
+	80aaaaaa 000000yy
+		アドレスa0aaaaaの内容に1byteデータyyを加算
+
+	82aaaaaa 0000yyyy
+		アドレスa0aaaaaの内容に2byteデータyyyyを加算
+
+	84aaaaaa yyyyyyyy
+		アドレスa0aaaaaの内容に4byteデータyyyyyyyyを加算
+
+	C6aaaaaa 0000yyyy
+		I/Oレジスタ4aaaaaに2byteデータyyyyを書込
+	C7aaaaaa yyyyyyyy
+		I/Oレジスタ4aaaaaに4byteデータyyyyyyyyを書込
+
+	IFコードや00000000で始まるコードは未対応
+
+	C4aaaaaa 0000yyyy
+	xxxxxxxx 001DC0DE
+		通称マスターコード、実機ではチートを有効にするのに必要
+		gpSPでは必要としない
+
+	DEADFACE 0000xxxx
+		暗号化に使用されるシードを変更する
+
+		注意
+		現在未対応

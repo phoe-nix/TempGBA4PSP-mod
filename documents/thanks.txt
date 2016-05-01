@@ -1,0 +1,15 @@
+このソフトウェアは、takka氏のgpSP kai 3.1、Nebuleon氏のTempGBAをベースにしています。
+
+文字表示は、mediumgauge氏の全角文字表示ライブラリをベースに使用しています。
+
+PNGイメージ作成、ボリュームバー表示は、NJ氏のnjemuのコードを使用しています。
+
+
+Gameboy Advanceのハードウェア仕様は、以下のドキュメントを参考にしています。
+ GBATEK by Martin Korth.
+ CowBite Virtual Hardware Specifications by Tom Happ
+
+以下のPC用GBAエミュレータのコードを参考にしています。
+ VisualBoyAdvance   by Forgotten & VBA development team
+ VisualBoyAdvance-M by VBA-M development team
+

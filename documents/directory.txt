@@ -1,0 +1,30 @@
+directory
+
+dir.ini - 使用するディレクトリの指定
+
+
+rom_directory
+ 最初にファイルリストで表示するディレクトリ
+
+save_directory
+ バックアップデータが保存されるディレクトリ
+
+save_state_directory
+ ステートセーブデータが保存されるディレクトリ
+
+game_config_directory
+ 個別のゲーム設定データが保存されるディレクトリ
+
+snapshot_directory
+ スクリーンショットが保存されるディレクトリ
+
+
+":"が含まれない場合、起動ディレクトリが付加される。
+rom_directory = roms
+ roms -> ms0:/PSP/GAME/TempGBA/roms/
+
+
+以下の場合、使用するディレクトリは起動ディレクトリに設定される。
+ dir.iniが存在しない場合 - すべてのディレクトリ
+ ディレクトリ設定が無効の項目
+
