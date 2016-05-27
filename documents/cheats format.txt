@@ -36,4 +36,4 @@ direct_v3 money max
 code_name:
 when emlutor language select japanese,cheat file charset use SHIFT-JIS,other ANSI.
 SJIS:12 全角文字、24半角文字
-ANSI:23 characters
+ANSI:24 characters
