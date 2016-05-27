@@ -239,10 +239,10 @@ static void process_cheat_gs1(CHEAT_TYPE *cheat)
 
       // ROM patch not supported yet
       case 0x6:
-        if(gamepak_file_large == -1)  // ƒIƒ“ƒƒ‚ƒŠ‚ÌROM‚Ìê‡‚¾‚¯
+        if(gamepak_file_large == -1)  // ã‚ªãƒ³ãƒ¡ãƒ¢ãƒªã®ROMã®å ´åˆã ã‘
         {
           ADDRESS16(gamepak_rom, (address * 2) - 0x08000000)
-           = (value & 0xFFFF);  // ƒf[ƒ^‚Ì‘ž‚Ý
+           = (value & 0xFFFF);  // ãƒ‡ãƒ¼ã‚¿ã®æ›¸è¾¼ã¿
         }
         break;
 
@@ -304,7 +304,7 @@ static void process_cheat_gs3(CHEAT_TYPE *cheat)
         {
           case 0x0:
           {
-            u32 iterations = value >> 24;
+            u32 iterations = value >> 8;
             u32 i2;
 
             value &= 0xFF;
